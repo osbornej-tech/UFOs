@@ -40,11 +40,7 @@ function updateFilters() {
   
     // 5. If a filter value was entered then add that filterId and value
     // to the filters list. Otherwise, clear that filter from the filters object.
-    if ( elementValue){
-      filters[inputID] = inputValue}
-    else {
-      delete filters[inputID]
-    }
+    filters[inputID] = inputValue
   
     // 6. Call function to apply all filters and rebuild the table
     filterTable();
@@ -59,30 +55,24 @@ function updateFilters() {
   
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-    Object.entries(filters).forEach(([key,values])=>{
+    Object.entries(filters).forEach(([key,value])=>{
       filteredData = filteredData.filter(x => x[key]=== value)
 
     })
-  
+
     // 10. Finally, rebuild the table using the filtered data
     buildTable(filteredData)
 
-  };
-
-  function resetFilters(){
-    location.reload();
   }
   
   // 2. Attach an event to listen for changes to each filter
-  d3.selectAll("input").on("change", updateFilters);
-  d3.select("#reset").on("click", resetFilters); 
-
+  d3.selectAll('input').on('change',updateFilters)
   
   // Build the table when the page loads
   buildTable(tableData);
 
   
- /*  //Tells the code what to do when an event occurs (such as someone clicking a filter button)
+  //Tells the code what to do when an event occurs (such as someone clicking a filter button)
   //apply that filtered data using an if statement. 
   function handleClick() {
     // Grab the datetime value from the filter
@@ -108,4 +98,3 @@ function updateFilters() {
 
   // Build the table when the page loads
   buildTable(tableData);
- */
